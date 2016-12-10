@@ -1,0 +1,6 @@
+{
+  "name": "Ultimate",
+  "tagline": "Android App Beginners Demo",
+  "body": "# Ultimate\r\nDemo!\r\nJust a basic App which consists of various demo examples and moves forward to more advanced concepts like CRUD operations and custom adapter with well illustrated examples.\r\nFlickr API integration and Movie List Description using custom adapter.\r\nImages Loaded using Universal Image Loader(UIL).\r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}

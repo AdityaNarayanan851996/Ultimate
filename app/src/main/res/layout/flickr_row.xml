@@ -4,15 +4,32 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <FrameLayout
+    <TextView
+        android:hint="Title:"
         android:layout_width="match_parent"
-        android:layout_height="150dp">
+        android:layout_height="wrap_content"
+        android:id="@+id/textView11"
+        android:textSize="15sp" />
+
+    <FrameLayout
+        android:layout_width="168dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:id="@+id/progressBar2"
+           />
 
         <ImageView
-            android:layout_width="178dp"
-            android:layout_height="152dp"
-            app:srcCompat="@drawable/common_google_signin_btn_icon_dark"
-            android:id="@+id/imageView4"
-            android:layout_gravity="center"/>
+            android:layout_width="354dp"
+            android:layout_height="198dp"
+            android:id="@+id/imageView3"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"/>
     </FrameLayout>
+
 </LinearLayout>

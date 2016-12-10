@@ -32,19 +32,49 @@ public class MainActivity extends AppCompatActivity {
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
     private GoogleApiClient client2;
-
-
-
+    private Button intents;
+    private Button sgnup;
+    private Button flickr;
+    private Button sign_up;
+    private Button json;
+    private Button login1;
 
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button sign_up = (Button) findViewById(R.id.signup);
-        Button login  = (Button) findViewById(R.id.login);
-        Button json = (Button)findViewById(R.id.json) ;
-        Button flickr = (Button)findViewById(R.id.flickr);
+        sign_up = (Button) findViewById(R.id.signup);
+
+        json = (Button)findViewById(R.id.json);
+        flickr = (Button)findViewById(R.id.flickr);
+        intents = (Button)findViewById(R.id.intents);
+        sgnup = (Button)findViewById(R.id.sgnup);
+
+        login1 = (Button)findViewById(R.id.login2);
+
+        login1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this,login.class));
+
+            }
+        });
+
+        sgnup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this,crud.class));
+
+            }
+        });
+
+        intents.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this,intent_activity.class));
+            }
+        });
 
         json.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,22 +91,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getApplicationContext(),"Congrats",Toast.LENGTH_LONG).show();
-            }
-        });
-
-
-
-        /////////////////////////////////////////////////////
-        /// SIGNUP ACTIVITY //////////////////////////////////
-        /////////////////////////////////////////////////////
-
-
         sign_up.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -84,15 +98,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, second.class));
             }
         });
-
-
-
-
-
-
-
-
-
 
         Log.i(TAG, " APP CREATED ");
         // ATTENTION: This wa) auto-generated to implement the App Indexing API.

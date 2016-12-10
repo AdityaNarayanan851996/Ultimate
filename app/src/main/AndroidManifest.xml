@@ -32,7 +32,14 @@
             android:label="@string/title_activity_second"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".json_applet" />
-        <activity android:name=".flickr_applet"></activity>
+        <activity android:name=".flickr_applet" />
+        <activity android:name=".intent_activity" />
+        <activity android:name=".second_intent_activity" />
+        <activity android:name=".crud" />
+        <activity
+            android:name=".login"
+            android:label="@string/title_activity_login"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

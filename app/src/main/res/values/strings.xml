@@ -3,4 +3,6 @@
     <string name="toast">You are Genius!!!!</string>
     <string name="title_activity_menuoptions">Menuoptions</string>
     <string name="title_activity_second">second</string>
+    <string name="title_activity_login">login</string>
+    <string name="title_activity_dummy">dummy</string>
 </resources>

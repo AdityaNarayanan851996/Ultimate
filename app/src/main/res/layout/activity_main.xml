@@ -11,86 +11,75 @@
     tools:context="com.example.myfinal.ultimate.MainActivity">
 
 
-    <EditText
-        android:layout_width="match_parent"
+    <Button
+        android:text="LOGIN"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:hint="NOT DONE "
-        android:ems="10"
+        android:id="@+id/login2"
+        android:layout_alignRight="@+id/flickr"
+        android:layout_alignEnd="@+id/flickr"
+        android:layout_below="@+id/textView9"
+        android:layout_alignLeft="@+id/flickr"
+        android:layout_alignStart="@+id/flickr" />
+
+    <TextView
+        android:text=" |||Different Examples |||"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView9"
+        android:textSize="30sp"
         android:layout_alignParentTop="true"
-        android:id="@+id/editText3"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:ems="10"
-        android:layout_below="@+id/editText3"
-        android:layout_marginTop="28dp"
-        android:hint = "Password"
-        android:id="@+id/editText4"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <CheckBox
-        android:text="Rememeber ME"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/rmebrme"
-        android:layout_below="@+id/editText4"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="49dp" />
-
-    <Button
-        android:text="NOT DONE"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/signup"
-        android:layout_below="@+id/rmebrme"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <Button
-        android:text="NOT DONE"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/login"
-        android:layout_below="@+id/rmebrme"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
     <Button
-        android:text="Movie List(Custom_Adapter)_TEST"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/json"
-        android:layout_below="@+id/signup"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="32dp" />
-
-    <Button
-        android:text="Flickr_Under_Progress"
+        android:text="Flickr_JSON"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/flickr"
-        android:layout_alignParentBottom="true"
-        android:layout_alignLeft="@+id/json"
-        android:layout_alignStart="@+id/json"
-        android:layout_alignRight="@+id/json"
-        android:layout_alignEnd="@+id/json" />
+        android:layout_below="@+id/textView9"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="76dp" />
 
-    <TextView
-        android:text="CLICK BELOW!"
-        android:textAllCaps="true"
+    <Button
+        android:text="JSON"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView9"
-        android:textSize="45sp"
-        android:layout_above="@+id/flickr"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="17dp" />
+        android:id="@+id/json"
+        android:layout_alignBaseline="@+id/flickr"
+        android:layout_alignBottom="@+id/flickr"
+        android:layout_alignRight="@+id/signup"
+        android:layout_alignEnd="@+id/signup"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="Intents"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/intents"
+        android:layout_alignBaseline="@+id/flickr"
+        android:layout_alignBottom="@+id/flickr"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:text="Image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/signup"
+        android:layout_below="@+id/textView9"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="CRUD"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/sgnup"
+        android:layout_below="@+id/textView9"
+        android:layout_alignLeft="@+id/intents"
+        android:layout_alignStart="@+id/intents" />
+
 
 </RelativeLayout>

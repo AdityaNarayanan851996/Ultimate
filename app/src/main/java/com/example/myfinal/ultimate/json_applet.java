@@ -171,7 +171,7 @@ public class json_applet extends AppCompatActivity  {
 
                     MovieModel movieModel = gson.fromJson(reqdObj.toString(),MovieModel.class);
 
-  /*                  movieModel.setMovie(reqdObj.getString("movie"));
+  /*                movieModel.setMovie(reqdObj.getString("movie"));
                     movieModel.setYear(reqdObj.getInt("year"));
                     movieModel.setRating((float) reqdObj.getDouble("rating"));
                     movieModel.setDuration(reqdObj.getString("duration"));
@@ -274,7 +274,19 @@ public class json_applet extends AppCompatActivity  {
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
 
-            ViewHolder holder = null;
+            class ViewHolder{
+                private  ImageView imageView2;
+                private  TextView textView;
+                private  TextView textView2;
+                private  RatingBar ratingBar;
+                private  TextView textView4;
+                private  TextView textView5;
+                private  TextView textView8;
+                private  TextView textView6;
+                private  TextView textView7;
+
+            }
+            ViewHolder holder = new ViewHolder();
 
             if(convertView==null)
             {
@@ -332,6 +344,20 @@ public class json_applet extends AppCompatActivity  {
             }); // Default options will be used
 
 
+            holder.textView.setText(movieModels.get(position).getMovie());
+            holder.textView2.setText("Year :" +movieModels.get(position).getYear());
+
+            holder.textView4.setText(movieModels.get(position).getDuration());
+            holder.textView5.setText(movieModels.get(position).getTagline());
+
+            holder.textView8.setText(movieModels.get(position).getDirector());
+
+            holder.ratingBar.setRating(movieModels.get(position).getRating()/2);
+
+
+
+
+
             StringBuffer buffer = new StringBuffer();
 
             for(MovieModel.Cast cast : movieModels.get(position).getCastList() ){
@@ -346,20 +372,7 @@ public class json_applet extends AppCompatActivity  {
 
         }
 
-        class ViewHolder{
-            private  ImageView imageView2;
-            private  TextView textView;
-            private  TextView textView2;
-            private  RatingBar ratingBar;
-            private  TextView textView4;
-            private  TextView textView5;
-            private  TextView textView8;
 
-
-            private  TextView textView6;
-            private  TextView textView7;
-
-        }
     }
 
 

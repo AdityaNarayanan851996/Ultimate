@@ -81,5 +81,17 @@
         android:layout_alignLeft="@+id/intents"
         android:layout_alignStart="@+id/intents" />
 
+    <Button
+        android:text="Fragments"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="41dp"
+        android:id="@+id/fragment"
+        android:layout_below="@+id/flickr"
+        android:layout_alignLeft="@+id/flickr"
+        android:layout_alignStart="@+id/flickr"
+        android:layout_alignRight="@+id/flickr"
+        android:layout_alignEnd="@+id/flickr" />
+
 
 </RelativeLayout>

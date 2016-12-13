@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     private Button sign_up;
     private Button json;
     private Button login1;
+    private Button fragments;
 
 
     @Override
@@ -52,6 +53,15 @@ public class MainActivity extends AppCompatActivity {
         sgnup = (Button)findViewById(R.id.sgnup);
 
         login1 = (Button)findViewById(R.id.login2);
+
+        fragments = (Button)findViewById(R.id.fragment);
+
+        fragments.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this,fragment.class));
+            }
+        });
 
         login1.setOnClickListener(new View.OnClickListener() {
             @Override

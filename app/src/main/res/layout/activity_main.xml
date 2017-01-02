@@ -10,18 +10,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.myfinal.ultimate.MainActivity">
 
-
-    <Button
-        android:text="LOGIN"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/login2"
-        android:layout_alignRight="@+id/flickr"
-        android:layout_alignEnd="@+id/flickr"
-        android:layout_below="@+id/textView9"
-        android:layout_alignLeft="@+id/flickr"
-        android:layout_alignStart="@+id/flickr" />
-
     <TextView
         android:text=" |||Different Examples |||"
         android:layout_width="wrap_content"
@@ -92,6 +80,25 @@
         android:layout_alignStart="@+id/flickr"
         android:layout_alignRight="@+id/flickr"
         android:layout_alignEnd="@+id/flickr" />
+
+    <Button
+        android:text="Login_Activity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView9"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/login2" />
+
+    <!--<Button
+        android:text="LOGIN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/login2"
+        android:layout_below="@+id/textView9"
+        android:layout_alignStart="@+id/flickr"
+        android:layout_alignEnd="@+id/flickr" />-->
+
+
 
 
 </RelativeLayout>

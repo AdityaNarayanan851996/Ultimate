@@ -5,11 +5,14 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.GridView;
@@ -48,6 +51,8 @@ public class flickr_applet extends AppCompatActivity {
     private ProgressDialog progressDialog;
 
     private ListView listview;
+    private static final String TAG = flickr_applet.class.getSimpleName();
+    private SwipeRefreshLayout mySwipeRefreshLayout;
 
 
     @Override
@@ -56,8 +61,8 @@ public class flickr_applet extends AppCompatActivity {
         setContentView(R.layout.activity_flickr_applet);
 
 
-        ///////////// Start Of OnCreate /////////////////
 
+                ///////////// Start Of OnCreate /////////////////
 
         //  List View Initialisation    //
         listview = (ListView)findViewById(R.id.imglist);
@@ -65,28 +70,49 @@ public class flickr_applet extends AppCompatActivity {
 
 
         //  Refresh Button Initialisation   //
-        rld = (Button) findViewById(R.id.rld);
+      //  rld = (Button) findViewById(R.id.rld);
 
 
         // OnClick Initialisation //
-        rld.setOnClickListener(new View.OnClickListener() {
+     /*   rld.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
 
                 new JSON().execute("https://api.flickr.com/services/rest/?method=flickr.photos.getRecent&api_key=d98f34e2210534e37332a2bb0ab18887&format=json&extras=url_n&nojsoncallback=1");
             }
-        });
+        });*/
 
-                ///...............................................///
+        /*
+ * Sets up a SwipeRefreshLayout.OnRefreshListener that is invoked when the user
+ * performs a swipe-to-refresh gesture.
+ */
+        mySwipeRefreshLayout = (SwipeRefreshLayout)findViewById(R.id.swiperefresh);
+
+        mySwipeRefreshLayout.setOnRefreshListener(
+                new SwipeRefreshLayout.OnRefreshListener() {
+                    @Override
+                    public void onRefresh() {
+                        Log.i(TAG, "onRefresh called from SwipeRefreshLayout");
+
+                        // This method performs the actual data-refresh operation.
+                        // The method calls setRefreshing(false) when it's finished.
+                        new JSON().execute("https://api.flickr.com/services/rest/?method=flickr.photos.getRecent&api_key=d98f34e2210534e37332a2bb0ab18887&format=json&extras=url_n&nojsoncallback=1");
+
+                    }
+                }
+        );
 
 
-                /////....Progress Dialog Initialisation...../////////
+        ///...............................................///
+
+
+  /*              /////....Progress Dialog Initialisation...../////////
 
                         progressDialog  = new ProgressDialog(this);
                         progressDialog.setIndeterminate(false);
                         progressDialog.setCancelable(false);
-                        progressDialog.setMessage("LOADING..TAKE A DEEP BREATH!");
+                        progressDialog.setMessage("LOADING..TAKE A DEEP BREATH!");*/
 
 
                 ///...............................................///
@@ -126,7 +152,7 @@ public class flickr_applet extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            progressDialog.show();
+            //progressDialog.show();
         }
 
         @Override
@@ -215,7 +241,15 @@ public class flickr_applet extends AppCompatActivity {
             super.onPostExecute(result);
             PhotoAdapter adapter = new PhotoAdapter(getApplicationContext(),R.layout.flickr_row,result);
             listview.setAdapter(adapter);
-            progressDialog.dismiss();
+         //   progressDialog.dismiss();
+            mySwipeRefreshLayout.setRefreshing(false);
+            listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                }
+            });
+
 
         }
     }

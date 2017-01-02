@@ -1,28 +1,37 @@
 package com.example.myfinal.ultimate;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.transition.Explode;
+import android.transition.Fade;
+import android.transition.TransitionManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.appindexing.Thing;
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+import static com.example.myfinal.ultimate.R.layout.flickr_row;
+import static com.example.myfinal.ultimate.R.layout.row;
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final String TAG = MainActivity.class.getSimpleName();
     private GoogleApiClient client;
@@ -39,22 +48,40 @@ public class MainActivity extends AppCompatActivity {
     private Button json;
     private Button login1;
     private Button fragments;
+    private ViewGroup mRoot;
+    final Explode explode = new Explode();
+
 
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
         setContentView(R.layout.activity_main);
-        sign_up = (Button) findViewById(R.id.signup);
 
+
+        // Enable Content Transistions.
+
+
+
+
+        mRoot = (ViewGroup)findViewById(R.id.activity_main);
+
+        sign_up = (Button) findViewById(R.id.signup);
         json = (Button)findViewById(R.id.json);
         flickr = (Button)findViewById(R.id.flickr);
         intents = (Button)findViewById(R.id.intents);
         sgnup = (Button)findViewById(R.id.sgnup);
-
         login1 = (Button)findViewById(R.id.login2);
-
         fragments = (Button)findViewById(R.id.fragment);
+
+
+
+
+        mRoot.setOnClickListener(this);
+
+
+
 
         fragments.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,15 +93,19 @@ public class MainActivity extends AppCompatActivity {
         login1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this,login.class));
+
+                startActivity(new Intent(MainActivity.this,SignIn.class));
+
 
             }
         });
+
 
         sgnup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this,crud.class));
+                getWindow().setExitTransition(explode);
 
             }
         });
@@ -110,21 +141,9 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Log.i(TAG, " APP CREATED ");
-        // ATTENTION: This wa) auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client2 = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();// ATTENTION: This was auto-generated to implement the App Indexing API.
-// See https://g.co/AppIndexing/AndroidStudio for more information.
-        client2.connect();
-        Log.i(TAG, " APP STARTED");
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        AppIndex.AppIndexApi.start(client2, getIndexApiAction());
-    }
 
     @Override
     protected void onResume() {
@@ -139,16 +158,7 @@ public class MainActivity extends AppCompatActivity {
         Log.i(TAG, " APP PAUSED");
     }
 
-    @Override
-    protected void onStop() {
-        super.onStop();// ATTENTION: This was auto-generated to implement the App Indexing API.
-// See https://g.co/AppIndexing/AndroidStudio for more information.
-        AppIndex.AppIndexApi.end(client2, getIndexApiAction());
-        Log.i(TAG, " APP STOPPED");
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client2.disconnect();
-    }
+
 
     @Override
     protected void onDestroy() {
@@ -156,22 +166,30 @@ public class MainActivity extends AppCompatActivity {
         Log.i(TAG, " APP DESTROYED");
     }
 
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-    public Action getIndexApiAction() {
-        Thing object = new Thing.Builder()
-                .setName("Main Page") // TODO: Define a title for the content shown.
-                // TODO: Make sure this auto-generated URL is correct.
-                .setUrl(Uri.parse("http://[ENTER-YOUR-URL-HERE]"))
-                .build();
-        return new Action.Builder(Action.TYPE_VIEW)
-                .setObject(object)
-                .setActionStatus(Action.STATUS_TYPE_COMPLETED)
-                .build();
+    @Override
+    public void onClick(View view) {
+        Explode fade = new Explode();
+        fade.setDuration(1000);
+        TransitionManager.beginDelayedTransition(mRoot,fade);
+      ;
+
+    }
+
+
+
+    public void toggleVisibility(View...views){
+        for(View Current:views){
+            if(Current.getVisibility()==View.VISIBLE){
+                Current.setVisibility(View.INVISIBLE);
+
+            }
+        }
+
     }
 }
+
+
+
 
 /*
 int counter= 0 ;

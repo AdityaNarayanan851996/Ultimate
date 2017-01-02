@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<transitionSet xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- specify enter and exit transitions -->
+    <item name="android:windowEnterTransition">@transition/explode</item>
+    <item name="android:windowExitTransition">@transition/explode</item>
+
+    <!-- specify shared element transitions -->
+    <item name="android:windowSharedElementEnterTransition">@transition/changebounds</item>
+    <item name="android:windowSharedElementExitTransition">@transition/changebounds</item>
+    <explode/>
+    <fade/>
+
+
+</transitionSet>
